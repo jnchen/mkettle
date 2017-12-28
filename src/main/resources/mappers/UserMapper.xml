@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnchen.mkettle.service.UserService">
+<sql id="all">
+    id,
+    name,
+    pass,
+    is_admin as isAdmin,
+    enable,
+    created,
+    creater,
+    modified,
+    modifier,
+    removed,
+    remover
+</sql>
+    <select id="getUser" parameterType="String"
+         resultType="com.jnchen.mkettle.domain.User">
+         select <include refid="all" />
+          from USER where id=#{id}
+    </select>
+
+    <select id="selectByUsername" parameterType="String"
+            resultType="com.jnchen.mkettle.domain.User">
+        select <include refid="all"/>
+        from USER where name = #{username}
+    </select>
+</mapper>
