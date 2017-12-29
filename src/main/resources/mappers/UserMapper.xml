@@ -14,7 +14,7 @@
     removed,
     remover
 </sql>
-    <select id="getUser" parameterType="String"
+    <select id="getUser" parameterType="Long"
          resultType="com.jnchen.mkettle.domain.User">
          select <include refid="all" />
           from USER where id=#{id}

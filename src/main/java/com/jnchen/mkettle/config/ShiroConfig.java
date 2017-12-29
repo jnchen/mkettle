@@ -20,7 +20,7 @@ import java.util.Map;
 /**
  * Created by caojingchen on 2017/12/28.
  */
-@Configuration
+//@Configuration
 public class ShiroConfig {
     @Resource
     private RedisSessionDao sessionDao;

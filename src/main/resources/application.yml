@@ -31,5 +31,9 @@ spring:
     host: localhost
     port: 6379
     password:
-
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
 

@@ -1,6 +1,7 @@
 package com.jnchen.mkettle.controller;
 
 import com.jnchen.mkettle.domain.User;
+import com.jnchen.mkettle.utils.security.MD5Util;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -20,7 +21,7 @@ public class LoginController {
     private static Logger logger = LoggerFactory.getLogger(LoginController.class);
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String login(@RequestParam User user){
-        UsernamePasswordToken token = new UsernamePasswordToken(user.getName(),user.getPass());
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getName(), MD5Util.encode(user.getPass()));
         Subject currentUser = SecurityUtils.getSubject();
         try{
             currentUser.login(token);

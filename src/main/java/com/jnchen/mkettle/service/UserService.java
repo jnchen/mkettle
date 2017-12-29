@@ -17,7 +17,7 @@ public class UserService {
     @Autowired
     private Dao dao;
 
-    public User getUser(String userId){
+    public User getUser(Long userId){
         return dao.get(CLASSNAME,"getUser",userId);
     }
 
