@@ -2,6 +2,8 @@ package com.jnchen.mkettle.controller;
 
 import com.jnchen.mkettle.domain.User;
 import com.jnchen.mkettle.service.UserService;
+import com.jnchen.mkettle.utils.schedule.ScheduleUtil;
+import com.jnchen.mkettle.utils.task.TestTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,5 +26,21 @@ public class TestController {
     @RequestMapping(value = "getUser")
     public User getUser(){
         return userService.getUser("d22122927f345e74bdc0103900ab2e4f");
+    }
+
+
+    @RequestMapping(value = "start")
+    public void start(String taskname){
+        ScheduleUtil.startTask(taskname,new TestTask(),"0/10 * * * * *");
+    }
+
+    @RequestMapping(value = "change")
+    public void change(String taskname){
+        ScheduleUtil.changeTask(taskname,new TestTask(),"0 0/1 * * * *");
+    }
+
+    @RequestMapping(value = "stop")
+    public void stop(String taskname){
+        ScheduleUtil.stopTask(taskname);
     }
 }

@@ -27,7 +27,8 @@ public class ShiroConfig {
 
     @Bean
     public UserRealm getUserRealm(){
-        return new UserRealm();
+        UserRealm realm = new UserRealm();
+        return realm;
     }
 
     @Bean
